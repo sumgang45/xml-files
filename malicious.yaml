@@ -1,0 +1,6 @@
+- first_name: !!python/object/apply:subprocess.check_output ['printenv']
+  last_name: "Doe"
+- first_name: "Jane"
+  last_name: "Doe"  
+
+
