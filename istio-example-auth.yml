@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Namespace
+metadata:  
+  labels:
+    istio-injection: enabled
+  name: dev  
+---    
+apiVersion: v1
+kind: Service
+metadata:
+  name: yaml-service
+  namespace: dev
+spec:
+  selector:
+    app: yaml
+  ports:
+  - protocol: TCP
+    port: 3000
+    nodePort: 32345
+  type: NodePort
+---    
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yaml-deployment
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: yaml
+  template:
+    metadata:
+      name: yaml-app
+      labels:
+        app: yaml
+    spec:      
+      containers:
+      - name: yaml
+        image: sharathwe45/deserialization-app:latest
+        ports:
+          - containerPort: 3000
+---  
+apiVersion: v1
+kind: Service
+metadata:
+  name: xxe-service
+  namespace: dev
+spec:
+  selector:
+    app: xxe
+  ports:
+  - protocol: TCP
+    port: 5000
+    nodePort: 32346
+  type: NodePort
+---    
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xxe-deployment
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: xxe
+  template:
+    metadata:
+      name: xxe-app
+      labels:
+        app: xxe
+    spec:      
+      containers:
+      - name: xxe
+        image: sharathwe45/xxe-app:latest
+        ports:
+          - containerPort: 5000       
