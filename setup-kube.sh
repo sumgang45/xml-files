@@ -7,6 +7,7 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
 kubectl taint nodes --all node-role.kubernetes.io/master-
+sleep 30
 kubectl get nodes
 
 echo "[+] Please wait for a few seconds and check if the K8s Cluster is running successfully"

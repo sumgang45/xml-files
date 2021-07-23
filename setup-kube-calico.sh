@@ -8,6 +8,7 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl apply -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml
 
 kubectl taint nodes --all node-role.kubernetes.io/master-
+sleep 30
 kubectl get nodes
 
 echo "[+] Please wait for a few seconds and check if the K8s Cluster is running successfully"
