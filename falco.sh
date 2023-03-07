@@ -8,4 +8,4 @@ sudo docker run --rm -i -t \
     -v /etc:/host/etc:ro \
     falcosecurity/falco-driver-loader:latest
 
-sudo docker run -d --rm -i -t     -e HOST_ROOT=/     --cap-add SYS_PTRACE --pid=host $(ls /dev/falco* | xargs -I {} echo --device {})     -v /var/run/docker.sock:/var/run/docker.sock     falcosecurity/falco-no-driver:lates
+sudo docker run -d --rm -i -t     -e HOST_ROOT=/     --cap-add SYS_PTRACE --pid=host $(ls /dev/falco* | xargs -I {} echo --device {})     -v /var/run/docker.sock:/var/run/docker.sock     falcosecurity/falco-no-driver:latest
